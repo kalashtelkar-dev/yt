@@ -1,0 +1,20 @@
+19:33:00 fixes2 start
+19:33:33 A4 variant f0 112
+19:33:33 A4 variant f0 117
+19:33:33 A4 variant f0 132
+19:33:33 A4 variant f0 102
+19:33:33 A4 variant f0 104
+19:35:18 E3 variant hf 0.005
+19:35:23 E3 variant hf 0.006
+19:35:24 E3 variant hf 0.118
+19:35:29 E3 variant hf 0.007
+19:35:31 E3 variant hf 0.267
+19:35:36 E3 variant hf 0.02
+19:35:36 fixes2 done
+19:35:53 hindi reassembled 284.9 s
+/Users/kalash/Projects/yt/dwarka_film/auto/voice_en.py:27: RuntimeWarning: invalid value encountered in cast
+  fd = int(0.01 * SR); x[:fd] *= np.linspace(0, 1, fd); x[-fd:] *= np.linspace(1, 0, fd); a = int(ON[i] * SR); out[a:a + len(x)] += x[:max(0, len(out) - a)]; placed[i] = (ON[i], ON[i] + len(x) / SR)
+/Users/kalash/Projects/yt/dwarka_film/auto/lib.py:67: RuntimeWarning: invalid value encountered in cast
+  with wave.open(p, 'wb') as w: w.setnchannels(1); w.setsampwidth(2); w.setframerate(sr); w.writeframes((np.clip(x, -1, 1) * 32767).astype(np.int16).tobytes())
+19:35:59 english voice done 53 lines
+19:36:01 english level matched -16.4 -16.1

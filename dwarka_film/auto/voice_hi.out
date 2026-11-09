@@ -1,0 +1,27 @@
+22:49:52 hindi voice attempt 0 53 lines
+23:41:03 speak failed C5 {'code': 'internal_error', 'message': 'Emotive Speech exited 1: RuntimeError: the speech server did not answer in 300 s'}
+23:41:03 speak failed C7 {'code': 'internal_error', 'message': 'Emotive Speech exited 1: RuntimeError: the speech server did not answer in 300 s'}
+23:41:03 speak failed C9 {'code': 'internal_error', 'message': 'Emotive Speech exited 1: RuntimeError: the speech server did not answer in 300 s'}
+23:41:03 speak failed C10 {'code': 'internal_error', 'message': 'Emotive Speech exited 1: RuntimeError: the speech server did not answer in 300 s'}
+23:41:03 speak failed C11 {'code': 'internal_error', 'message': 'Emotive Speech exited 1: RuntimeError: the speech server did not answer in 300 s'}
+23:41:03 speak failed C12 {'code': 'internal_error', 'message': 'Emotive Speech exited 1: RuntimeError: the speech server did not answer in 300 s'}
+23:41:03 speak failed C13 {'code': 'internal_error', 'message': 'Emotive Speech exited 1: RuntimeError: the speech server did not answer in 300 s'}
+23:41:03 speak failed C16 {'code': 'internal_error', 'message': 'Emotive Speech exited 1: RuntimeError: the speech server did not answer in 300 s'}
+23:44:36 judge error C5 [Errno 2] No such file or directory: '/Users/kalash/Projects/yt/dwarka_film/voice_hi/trim/C5_0.wav'
+23:44:36 retake C5 coverage 0 sh-risk []
+23:44:36 judge error C7 [Errno 2] No such file or directory: '/Users/kalash/Projects/yt/dwarka_film/voice_hi/trim/C7_0.wav'
+23:44:36 retake C7 coverage 0 sh-risk []
+23:44:36 judge error C9 [Errno 2] No such file or directory: '/Users/kalash/Projects/yt/dwarka_film/voice_hi/trim/C9_0.wav'
+23:44:36 retake C9 coverage 0 sh-risk []
+23:44:36 judge error C10 [Errno 2] No such file or directory: '/Users/kalash/Projects/yt/dwarka_film/voice_hi/trim/C10_0.wav'
+23:44:36 retake C10 coverage 0 sh-risk []
+23:44:36 judge error C11 [Errno 2] No such file or directory: '/Users/kalash/Projects/yt/dwarka_film/voice_hi/trim/C11_0.wav'
+23:44:36 retake C11 coverage 0 sh-risk []
+23:44:36 judge error C12 [Errno 2] No such file or directory: '/Users/kalash/Projects/yt/dwarka_film/voice_hi/trim/C12_0.wav'
+23:44:36 retake C12 coverage 0 sh-risk []
+23:44:36 judge error C13 [Errno 2] No such file or directory: '/Users/kalash/Projects/yt/dwarka_film/voice_hi/trim/C13_0.wav'
+23:44:36 retake C13 coverage 0 sh-risk []
+23:44:36 judge error C16 [Errno 2] No such file or directory: '/Users/kalash/Projects/yt/dwarka_film/voice_hi/trim/C16_0.wav'
+23:44:36 retake C16 coverage 0 sh-risk []
+23:47:33 hindi voice attempt 1 8 lines
+23:49:54 hindi voice done 285.4 s; 0 lines still flagged

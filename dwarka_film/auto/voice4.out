@@ -1,0 +1,10 @@
+18:36:00 hindi v3: rendering 5 sections
+18:38:58 retake B10 coverage 0.78 sh-risk []
+18:42:04 retake B10 coverage 0.78 sh-risk []
+18:42:28 hindi v3 done 284.3 s; 0 lines still flagged
+/Users/kalash/Projects/yt/dwarka_film/auto/voice_en.py:27: RuntimeWarning: overflow encountered in add
+  fd = int(0.01 * SR); x[:fd] *= np.linspace(0, 1, fd); x[-fd:] *= np.linspace(1, 0, fd); a = int(ON[i] * SR); out[a:a + len(x)] += x[:max(0, len(out) - a)]; placed[i] = (ON[i], ON[i] + len(x) / SR)
+/Users/kalash/Projects/yt/dwarka_film/auto/lib.py:67: RuntimeWarning: invalid value encountered in cast
+  with wave.open(p, 'wb') as w: w.setnchannels(1); w.setsampwidth(2); w.setframerate(sr); w.writeframes((np.clip(x, -1, 1) * 32767).astype(np.int16).tobytes())
+18:42:35 english voice done 53 lines
+18:42:36 english level matched -16.4 -16.1

@@ -1,0 +1,32 @@
+# secrets
+.env
+*.mcpb
+.DS_Store
+.playwright-mcp/
+node_modules/
+# big media and generated files
+*.mp4
+*.mov
+*.mp3
+*.wav
+*.m4a
+*.png
+*.jpg
+*.jpeg
+*.webp
+*.gif
+*.zip
+*.log
+# generated media folders
+**/clips/
+**/stills/
+**/up/
+**/frames/
+**/original_clips/
+**/lines/
+**/thumb/
+**/v1_backup/
+queue/*_before_*.mjs
+*.mkv
+*.webm
+*.out

@@ -1,0 +1,72 @@
+{
+ "n01_lakhs": {
+  "t": 2.364,
+  "dur": 3.6,
+  "corner": "TR",
+  "scores": {
+   "TL": 90.5,
+   "TR": 44.9,
+   "BL": 302.8
+  }
+ },
+ "n02_ayodhya_meaning": {
+  "t": 7.209,
+  "dur": 3.6,
+  "corner": "TR",
+  "scores": {
+   "TL": 123.7,
+   "TR": 94.7,
+   "BL": 187.2
+  }
+ },
+ "n10_pran": {
+  "t": 14.776,
+  "dur": 3.8,
+  "corner": "TR",
+  "scores": {
+   "TL": 192.6,
+   "TR": 166.1,
+   "BL": 267.3
+  }
+ },
+ "c03_hanumangarhi": {
+  "t": 34.41,
+  "dur": 4.0,
+  "corner": "TL",
+  "scores": {
+   "TL": 50.4,
+   "TR": 62.1,
+   "BL": 202.7
+  }
+ },
+ "c05_paidi": {
+  "t": 46.539,
+  "dur": 4.0,
+  "corner": "TL",
+  "scores": {
+   "TL": 132.9,
+   "TR": 140.9,
+   "BL": 189.7
+  }
+ },
+ "c11_entry": {
+  "t": 52.283,
+  "dur": 2.8,
+  "corner": "TL",
+  "scores": {
+   "TL": 137.6,
+   "TR": 140.3,
+   "BL": 149.2
+  }
+ },
+ "c13_season": {
+  "t": 56.666,
+  "dur": 4.2,
+  "corner": "TR",
+  "scores": {
+   "TL": 39.4,
+   "TR": 33.9,
+   "BL": 224.6
+  }
+ }
+}
