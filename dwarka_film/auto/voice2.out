@@ -1,7 +1,0 @@
-18:04:16 hindi v2: rendering 22 beats
-18:08:16 retake C20 coverage 0.67 sh-risk []
-18:09:10 retake E5 coverage 0.8 sh-risk []
-18:10:18 hindi v2 done 290.7 s; 0 lines still flagged
-/Users/kalash/Projects/yt/dwarka_film/auto/lib.py:67: RuntimeWarning: invalid value encountered in cast
-  with wave.open(p, 'wb') as w: w.setnchannels(1); w.setsampwidth(2); w.setframerate(sr); w.writeframes((np.clip(x, -1, 1) * 32767).astype(np.int16).tobytes())
-18:10:25 english voice done 53 lines
