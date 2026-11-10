@@ -1,8 +1,8 @@
 // Dwarka 16:9 pipeline, ONE shot at a time by default: [real photo -> clean edit] or [painted still] -> upscale x2 -> image-to-video.
 // Resumable: every step id is saved on the queue job, finished files are never redone.
-import fs from 'node:fs'; import path from 'node:path'; import { Worker } from 'bullmq'; import { api, conn, API, KEY } from './lib.mjs';
+import fs from 'node:fs'; import path from 'node:path'; import { Worker } from 'bullmq'; import { toBlob } from './blob.mjs'; import { api, conn, API, KEY } from './lib.mjs';
 export const DQ = 'dhanu';
-const OUT = path.join(path.dirname(new URL(import.meta.url).pathname), '../dhanushkodi_film');
+const OUT = process.env.DATA_DIR ? path.join(process.env.DATA_DIR, 'dhanu') : path.join(path.dirname(new URL(import.meta.url).pathname), '../dhanushkodi_film'); // DATA_DIR = Railway volume
 const POLL = +(process.env.POLL_MS || 30000), sleep = ms => new Promise(r => setTimeout(r, ms));
 for (const d of ['stills', 'up', 'clips', 'photos']) fs.mkdirSync(path.join(OUT, d), { recursive: true });
 async function upload(file) {
@@ -21,6 +21,7 @@ async function step(job, name, run, ext, dir) {
       const d = j.downloads[0], buf = Buffer.from(await (await fetch(d.url)).arrayBuffer());
       if (buf.length < 5000) throw new Error(`${job.data.shot} ${name} download too small`);
       fs.writeFileSync(file + '.part', buf); fs.renameSync(file + '.part', file);
+      if (dir === 'clips' || dir === 'stills') await toBlob(file, `dhanu/${dir}/${job.data.shot}.${ext}`); // survives EngineX expiry, feeds the web UI
       ids[name] = { ...ids[name], done: true, key: d.key }; await job.updateData({ ...job.data, ids }); return d.key;
     }
   }

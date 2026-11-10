@@ -30,3 +30,4 @@ queue/*_before_*.mjs
 *.mkv
 *.webm
 *.out
+.secrets/
