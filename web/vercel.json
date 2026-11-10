@@ -2,6 +2,8 @@
   "rewrites": [
     { "source": "/api/dhanu", "destination": "/api/snap?k=dhanu" },
     { "source": "/api/dhshort", "destination": "/api/snap?k=dhshort" },
+    { "source": "/api/padma", "destination": "/api/snap?k=padma" },
+    { "source": "/pn/:d(clips|stills)/:f", "destination": "/api/media?k=pn&d=:d&f=:f" },
     { "source": "/api/build", "destination": "/api/snap?k=build" },
     { "source": "/:k(dhanu|dhshort)/:d(clips|stills)/:f", "destination": "/api/media?k=:k&d=:d&f=:f" }
   ],

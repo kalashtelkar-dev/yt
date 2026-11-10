@@ -1,0 +1,43 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="robots" content="noindex"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Vault B film · progress</title>
+<style>
+:root{--bg:#0d1114;--fg:#ece5d6;--mut:#8f958f;--gold:#e9b85c;--red:#d9442f;--ok:#58b27a;--card:#161c20;--line:#273037}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);font:15px/1.5 system-ui,-apple-system,sans-serif;padding:20px max(16px,env(safe-area-inset-left))}
+a{color:var(--gold)}h1{font-size:22px;margin:0 0 4px}h2{font-size:15px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin:28px 0 10px}
+.top{display:flex;gap:14px;align-items:baseline;flex-wrap:wrap}.pct{margin-left:auto;font-size:22px;color:var(--gold)}
+#bar{height:6px;background:var(--line);border-radius:3px;margin:10px 0 4px;overflow:hidden}#bar i{display:block;height:100%;background:var(--gold);width:0;transition:width .6s}
+.stages{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:10px}.st{background:var(--card);border:1px solid var(--line);padding:10px 12px;border-radius:8px}
+.st b{display:block}.st small{color:var(--mut)}.st.done{border-color:var(--ok)}.st.active{border-color:var(--gold)}.st.active b:after{content:' · working';color:var(--gold);font-weight:400}.st.done b:before{content:'✓ ';color:var(--ok)}
+.q{color:var(--mut);margin:6px 0}.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px}
+.sh{background:var(--card);border:1px solid var(--line);border-radius:8px;overflow:hidden;min-width:0}.v{aspect-ratio:16/9;background:#000;position:relative;display:flex;align-items:center;justify-content:center;color:var(--mut);font-size:13px}
+.v video,.v img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0}.v .w{position:relative}.meta{padding:8px 10px;font-size:13px}.meta b{color:var(--gold)}.tag{float:right;font-size:11px;padding:1px 7px;border-radius:9px;background:#223039;color:#b9cbd6}
+.tag.real{background:#2e3a20;color:#cfe3a2}.meta p{margin:4px 0 0;color:#c9c4b8;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+pre{background:var(--card);border:1px solid var(--line);padding:10px;border-radius:8px;white-space:pre-wrap;overflow-x:auto;font-size:12px;color:#b5bdb5}
+video.main{width:100%;max-width:960px;border-radius:8px;background:#000}
+</style></head><body>
+<div class="top"><a href="/">&larr; All films</a><h1>Padmanabhaswamy · Vault B film</h1><span class="pct" id="pct"></span></div><div id="bar"><i></i></div><div class="q" id="q"></div>
+<div id="fin"></div>
+<h2>Stages</h2><div class="stages" id="stages"></div>
+<h2>Shots</h2><div class="grid" id="grid"></div>
+<h2>Log</h2><pre id="log"></pre>
+<script>
+const _f=fetch;fetch=async(...a)=>{const r=await _f(...a);if(r.status==401)location='/login.html';return r}; // not logged in -> login page
+const DEFS=[['voice','Hindi voiceover','Sameer, checked line by line'],['real','Real photo camera shots','Depth Motion: parallax, fog, god rays, water'],['paint','Painted shots','still, upscale, image to video, two at a time'],['text','Kinetic on-screen text','16 designed overlays, not boxes'],['cut','Cinematic cut','transitions, grade, rotoscope, VFX'],['mix','Mystery sound mix','suspense music, shot-by-shot sound'],['package','YouTube package','title, description, tags, thumbnail, subtitles']];
+const $=id=>document.getElementById(id);let LASTSIG='';
+function esc(s){return String(s).replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]))}
+async function tick(){let d;try{d=await (await fetch('/api/padma')).json()}catch(e){return}
+ const sig=JSON.stringify([d.shots.map(s=>[s.clip,s.still]),d.st,d.gq,d.oq,d.texts,d.finals,d.log]);if(sig===LASTSIG)return;LASTSIG=sig;
+ const sh=d.shots,real=sh.filter(s=>s.type!=='painted'),paint=sh.filter(s=>s.type==='painted');
+ const rd=real.filter(s=>s.clip).length,pd=paint.filter(s=>s.clip).length;
+ const st={voice:d.voice,real:rd===real.length&&real.length>0,paint:pd===paint.length&&paint.length>0,text:d.texts>=16,cut:'cut' in d.st,mix:'mix' in d.st,package:'package' in d.st};
+ let act=false;$('stages').innerHTML=DEFS.map(([k,n,note])=>{let c=st[k]?'done':(!act?(act=true,'active'):'');let extra=k=='real'?' · '+rd+'/'+real.length:k=='paint'?' · '+pd+'/'+paint.length:k=='text'?' · '+d.texts+'/16':'';return '<div class="st '+c+'"><b>'+n+'</b><small>'+note+extra+'</small></div>'}).join('');
+ const done=Object.values(st).filter(Boolean).length;const frac=(done+(rd/Math.max(1,real.length)*.0)+(pd/Math.max(1,paint.length)*0))/DEFS.length;
+ const clipFrac=sh.length?sh.filter(s=>s.clip).length/sh.length:0;const total=Math.round(100*(done/DEFS.length*.5+clipFrac*.5));$('pct').textContent=total+'%';$('bar').firstElementChild.style.width=total+'%';
+ $('q').textContent='painted queue: '+d.gq.active+' running, '+d.gq.waiting+' waiting, '+d.gq.completed+' done'+(d.gq.failed?(', '+d.gq.failed+' failed'):'')+' · other engines queue: '+d.oq.active+' running, '+d.oq.waiting+' waiting';
+ $('fin').innerHTML=d.finals.length?('<h2>Latest cut</h2><video class="main" controls preload="metadata" src="/pn/'+d.finals[0].replace('.mp4','')+'.mp4"></video>'):'';
+ $('grid').innerHTML=sh.map(s=>{const real=s.type!=='painted';const media=s.clip&&s.type!=='real footage'?'<video src="/pn/clips/'+s.id+'.mp4#t=0.5" muted loop playsinline preload="metadata" data-play="1"></video>':s.still?'<img loading="lazy" src="/pn/stills/'+s.id+'.png" style="opacity:.55"><span class="w">clip generating</span>':'<span class="w">'+(s.type==='real footage'?'real footage, used in the cut':'in queue')+'</span>';
+  return '<div class="sh"><div class="v">'+media+'</div><div class="meta"><span class="tag '+(real?'real':'')+'">'+s.type+'</span><b>'+s.id+'</b> · '+s.start.toFixed(1)+'s<p>'+esc(s.text)+'</p></div></div>'}).join('');
+ $('log').textContent=d.log||'(no log yet)';}
+document.addEventListener('mouseover',e=>{const v=e.target.closest&&e.target.closest('video[data-play]');if(v)v.play().catch(()=>{})});
+document.addEventListener('mouseout',e=>{const v=e.target.closest&&e.target.closest('video[data-play]');if(v)v.pause()});
+tick();setInterval(tick,8000);
+</script></body></html>

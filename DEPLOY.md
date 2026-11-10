@@ -9,7 +9,7 @@ Browser ──login──▶ Vercel (web/) ──reads snapshots──▶ Redis 
 Secrets: EngineX `AUTH_KEY` lives only on Render. Vercel never sees it.
 
 ## 1. Redis (free)
-Create a free database at redis.io/cloud (30 MB, TLS). Copy the URL as `rediss://default:PASSWORD@HOST:PORT`. Must be reachable from the internet, because Vercel, Render and your Mac all connect.
+Create a free database at redis.io/cloud (30 MB). The free plan has no TLS, so the URL is `redis://default:PASSWORD@HOST:PORT`. Must be reachable from the internet, because Vercel, Render and your Mac all connect.
 
 ## 2. Vercel Blob + UI
 1. Vercel dashboard → Storage → create a **Blob** store, **Private**. Copy its `BLOB_READ_WRITE_TOKEN`.
